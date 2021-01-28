@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 1s
+  evaluation_interval: 1s
+
+scrape_configs:
+  - job_name: 'ec2-nodes'
+    ec2_sd_configs:
+      - port: 9100
+        region: ap-southeast-1
+        filters:
+          - name: tag:Name
+            values:
+              - MY_SERVER_NAME
+    relabel_configs:
+      # if you want to drop the scrapes
+      - source_labels: [__meta_ec2_tag_Name]
+        regex: MY_SERVER_NAME.*
+        action: keep
+      - source_labels: [__meta_ec2_tag_Name]
+        target_label: instance

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  prometheus:
+    ports:
+     - 9090:9090
+    volumes:
+      - ./config/prometheus:/etc/prometheus/
+    image: prom/prometheus
+    # assuming you use source these variable beforehand
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+
