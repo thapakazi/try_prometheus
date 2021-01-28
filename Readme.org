@@ -1,0 +1,5 @@
+
+this is my localhost version quick exploration on prrometheus configs.
+
+*** Includes
+  -  [x] try service discovery of ec2 instances with filters
